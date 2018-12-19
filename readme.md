@@ -24,23 +24,23 @@ Select enables task synchronisation
 - & operator returns  the address of some data
 - * operator returns the data at some address
 ```
-var x int = 1 	//declaration and initialisation of an int
-var y int 		//declaration of an int
-var ip *int		//declaration of a pointer to an int
+var x int = 1			//declaration and initialisation of an int
+var y int 			//declaration of an int
+var ip *int			//declaration of a pointer to an int
 
-ip = &x 			//setting ip to the address of x > ip now points to x
-y = *ip			//setting y to the data stored at the address ip > y now is x > y = 1
+ip = &x 				//setting ip to the address of x > ip now points to x
+y = *ip				//setting y to the data stored at the address ip > y now is x > y = 1
 ----------------------------------------------------
 var ptr *int = new(int) //new() creates a var and returns pointer to that var, therfore *int
 *ptr = 3
-fmt.Println(*ptr)		 //3
-fmt.Println(ptr) 		//some address
+fmt.Println(*ptr)		//3
+fmt.Println(ptr)		//some address
 ```
 
 ## Variable Scope
 A variable is accessible from block Bj if:
-	- the variable is declared in Bi and 
-	- Bi >= Bj
+- the variable is declared in Bi and 
+- Bi >= Bj
 
 ## Memory: Stack vs Heap
 Stack: variables defined within a function 
