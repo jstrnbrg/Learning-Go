@@ -13,18 +13,29 @@ package main
 
 import "fmt"
 import "sort"
+import "strconv"
 
 
 
 func main() {
-  slice := make([]int, 3)
+  slice := make([]int, 0, 3)
   for {
     fmt.Print("Enter int: ")
-    var input int
+    var input string
     fmt.Scanln(&input)
-    slice = append(slice, input)
-    sort.Sort(slice)
-
+    fmt.Println(input)
+    if input == "X" {
+      fmt.Println("It was an X")
+      break
+    } else {
+      input2, err := strconv.Atoi(input)
+      if err != nil {
+        fmt.Println(err)
+      }
+      slice = append(slice, input2)
+      sort.Ints(slice)
+      fmt.Println(slice)
+    }
   }
 
 
