@@ -248,4 +248,62 @@ p1.name = "joe"
 
 
 ```
-- 
+
+## Blank identifier
+If an assignment requires multiple values on the left side, but one of the values will not be used by the program, a blank identifier on the left-hand-side of the assignment avoids the need to create a dummy variable and makes it clear that the value is to be discarded.
+```
+if _, err := os.Stat(path); os.IsNotExist(err) {
+	fmt.Printf("%s does not exist\n", path)
+}
+```
+
+## JSON
+- Format to represent structured Data
+- Consists of Attribute-Value pairs
+- All unicode
+- Types can be combined recursively
+```
+//Go struct
+p1 := Person(name: "joh", age:24, phone:"039203")
+
+//JSON
+{"name": "joh", "age":23, "phone":"0320323"}
+
+//Marshal creates JSON byte array from Go struct
+barr, err := json.Marshal(p1)
+
+//Unmarshal converts JSON []byte array into a Go struct
+var p2 Person
+err := json.Unmarshall(barr, &p2)
+
+//the Go struct needs to have the same field names as the JSON object has attributes
+//if Unmarshal worked, err is nil
+```
+
+## File Access
+- Basic operations:
+	- Open - get handle for access
+	- Read - read bytes into []byte
+	- Write - write []bytes into file
+	- Close - release handle
+	- Seek - move read/write head
+- Package “io/ioutil”
+```
+dat, err := ioutil.ReadFile("test.txt")
+//no open/close needed when using ReadFile
+//don't use ReadFile with large files
+```
+
+## os Package
+- os.Open() -returns file descriptor
+- os.Close() 
+- os.Read() - reads from file into []byte, you can control how big []byte is
+- os.Write() - writes []byte into file
+```
+f, err := os.Open("test.txt)
+barr := make([]byte, 10)
+number, err := f.read(barr) 
+f.close()
+//fills barr with first 10 bytes from file, calling it the next time it will read the next 10 bytes --> head moves
+//number = number of bytes read
+```
