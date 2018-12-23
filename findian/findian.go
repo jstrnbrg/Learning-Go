@@ -14,14 +14,20 @@ package main
 
 import "fmt"
 import "strings"
-
+import "bufio"
+import "os"
+//
 
 func main() {
   fmt.Print("Enter text: ")
-  var input string
-  fmt.Scanln(&input)
+  inputReader := bufio.NewReader(os.Stdin)
+  input, _ := inputReader.ReadString('\n')
   input =  strings.ToLower(input)
-  if strings.Contains(input, "a") && strings.HasPrefix(input, "i") && strings.HasSuffix(input, "n") {
+  response := strings.Join(strings.Fields(input),"")
+  response = strings.TrimSpace(response)
+  fmt.Printf("Stripped input: %q\n", response)
+
+  if strings.Contains(response, "a") && strings.HasPrefix(response, "i") && strings.HasSuffix(response, "n") {
     fmt.Println("Found!")
   } else {
       fmt.Println("Not Found!")
