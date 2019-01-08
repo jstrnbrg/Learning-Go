@@ -12,6 +12,7 @@ import "fmt"
 import "bufio"
 import "os"
 import "encoding/json"
+import "strings"
 //
 
 func main() {
@@ -22,22 +23,22 @@ func main() {
   name, _ := inputReader.ReadString('\n')
   fmt.Println(name)
   if name != "" {
-    infoMap["name"] = name
+    infoMap["name"] = strings.TrimSuffix(name, "\n")
   }
 
   fmt.Print("Enter address: ")
   address, _ := inputReader.ReadString('\n')
   if address != "" {
-    infoMap["address"] = address
+    infoMap["address"] = strings.TrimSuffix(address, "\n")
   }
 
-  barr, _ := json.Marshal(infoMap)
-
-  err := json.Unmarshal(barr, &infoMap)
-  fmt.Println(infoMap)
+  barr, err := json.Marshal(infoMap)
   if err != nil {
-    fmt.Println(err)
-  }
+		fmt.Println("Error marshalling the json object")
+		os.Exit(1)
+	}
+  fmt.Println(string(barr))
+
 
 
 }
