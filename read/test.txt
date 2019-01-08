@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 jo bo
 hulli bo
 mark low
 don chow
+=======
+ho jo
+fnef fefe
+gjogje efe
+>>>>>>> 8d73f347f6410db2b299949a1f8ec23a4d2fbf2c
